@@ -43,6 +43,7 @@ body {
   color: var(--light);
   overflow-x: hidden;
   font-family: "Poppins", sans-serif;
+  
 }
 
 /* Navigation */
@@ -62,6 +63,7 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+
 .nav-item {
   opacity: 0;
   transform: translateY(-20px);
@@ -71,6 +73,7 @@ body {
   padding: 1rem 5%;
   background-color: var(--dark);
 }
+
 .logo {
   font-size: 2.2rem;
   font-weight: 500;
@@ -84,10 +87,12 @@ body {
   opacity: 0;
   transform: translateX(-20px);
 }
+
 .logo:hover {
   transform: scale(1.05);
   color: var(--primary);
 }
+
 .logo:hover span {
   color: var(--gray);
 }
@@ -155,6 +160,7 @@ body {
   color: var(--black);
   cursor: pointer;
   padding: 8px;
+  border-radius: 4px;
 }
 
 /* Hero Section */
@@ -162,6 +168,8 @@ body {
   height: 100vh;
   display: flex;
   align-items: center;
+  margin: 0 auto;
+  width: 100%;
   padding: 0 5%;
   position: relative;
   overflow: hidden;
@@ -277,6 +285,7 @@ body {
   text-align: center;
   position: relative;
 }
+
 /* Bottom-left glow */
 .section::before {
   content: "";
@@ -387,7 +396,7 @@ body {
   text-align: center;
   border: 2px solid var(--primary-dark);
   position: relative;
-  overflow: hidden; /* Important for clipping glow */
+  overflow: hidden;
 }
 
 .service-card::after {
@@ -402,10 +411,11 @@ body {
     rgba(255, 255, 0, 0.4),
     rgba(255, 255, 0, 0.1)
   );
-
   filter: blur(50px);
   z-index: -1;
+  animation: glowMove 3s infinite ease-in-out;
 }
+
 @keyframes glowMove {
   0%,
   100% {
@@ -416,10 +426,6 @@ body {
     transform: scale(1.2);
     opacity: 0.6;
   }
-}
-
-.service-card::after {
-  animation: glowMove 3s infinite ease-in-out;
 }
 
 .service-card:hover {
@@ -449,7 +455,6 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  
 }
 
 .team-photo img {
@@ -471,6 +476,7 @@ body {
   margin-bottom: 3rem;
   flex-wrap: wrap;
 }
+
 .filter-btn {
   padding: 0.5rem 1.5rem;
   background: none;
@@ -481,7 +487,7 @@ body {
   transition: all 0.3s ease;
   font-weight: 700;
   font-family: sans-serif;
-  transition: all ease 0.5;
+  font-size: 0.9rem;
 }
 
 .filter-btn.active,
@@ -577,10 +583,10 @@ body {
 .testimonials {
   margin-top: 5rem;
 }
-.testimonials >h3{
-    font-size:3rem;
-    text-shadow: 0 4px 4px rgb(31, 30, 30);
 
+.testimonials > h3 {
+  font-size: 3rem;
+  text-shadow: 0 4px 4px rgb(31, 30, 30);
 }
 
 .testimonial-slider {
@@ -621,18 +627,18 @@ body {
   transition: 0.5s;
   background-size: 200% auto;
 }
+
 .testimonial-card:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
 }
 
-
 .testimonial-text {
   font-style: italic;
   margin-bottom: 1.5rem;
   text-shadow: 0 2px 2px rgb(50, 50, 50);
-  font-family:Verdana;
+  font-family: Verdana;
 }
 
 .testimonial-author {
@@ -659,7 +665,11 @@ body {
   font-size: 0.8rem;
   color: var(--primary);
   text-shadow: 0 2px 2px rgb(50, 50, 50);
+}
 
+/* Jobs Section */
+.jobs {
+  position: relative;
 }
 
 /* Bottom-left glow */
@@ -704,7 +714,6 @@ body {
   z-index: -1;
 }
 
-
 .jobs .section-title {
   color: white;
   text-align: center;
@@ -730,7 +739,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 0px 4px var(--gray);
-
 }
 
 .job-card:hover {
@@ -902,8 +910,6 @@ textarea.form-control {
 
 .footer-links li {
   margin-bottom: 0.8rem;
-
-
 }
 
 .footer-links a {
@@ -913,8 +919,6 @@ textarea.form-control {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  text-decoration: none;
-
 }
 
 .footer-links a:hover {
@@ -925,6 +929,7 @@ textarea.form-control {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-links a {
@@ -938,7 +943,6 @@ textarea.form-control {
   color: white;
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   text-decoration: none;
-
 }
 
 .social-links a:hover {
@@ -985,111 +989,224 @@ textarea.form-control {
   animation-delay: 0.8s;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+/* ================================
+   RESPONSIVE DESIGN - IMPROVED
+   ================================ */
+
+/* Large tablets and small desktops (1200px and down) */
+@media (max-width: 1200px) {
+  .hero-image {
+    min-width: 500px;
+    width: 45%;
+  }
+  
   .hero h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
-
-  .about-content {
-    flex-direction: column;
+  
+  .section-title {
+    font-size: 2.5rem;
   }
-
-  .team-photo {
-    margin-top: 2rem;
+  
+  .navbar {
+    padding: 1.2rem 4%;
+  }
+  
+  .section {
+    padding: 4rem 4%;
   }
 }
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 80px);
-    background:var(--black);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transition: all 0.5s ease;
-  }
-
-  .nav-links.active {
-    left: 0;
-  }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
+/* Tablets (1024px and down) */
+@media (max-width: 1024px) {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 5rem;
     height: auto;
     min-height: 100vh;
+    padding-top: 2rem;
   }
-
+  
   .hero-content {
-    margin-top: 3rem;
+    max-width: 100%;
+    margin-bottom: 3rem;
   }
-
+  
   .hero-image {
     position: relative;
-    width: 100%;
+    width: 80%;
+    min-width: 400px;
     right: auto;
     top: auto;
     transform: none;
-    margin-top: 3rem;
-    animation: float-mobile 6s ease-in-out infinite;
   }
-  @keyframes float-mobile {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  
+  .hero h1 {
+    font-size: 2.8rem;}}
+    /* Mobile Responsive (768px and down) */
+@media (max-width: 768px) {
+  /* Remove all glow effects */
+  .section::before,
+  .section::after,
+  .jobs::before,
+  .jobs::after,
+  .service-card::after {
+    display: none;
   }
-
+  
+  /* Center align everything */
+  body {
+    text-align: center;
+  }
+  
+  /* Navigation */
+  .navbar {
+    padding: 1rem 5%;
+  }
+  
+  .nav-links {
+    display: none; /* Hide desktop nav */
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    justify-content: center;
+  }
+  
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding: 6rem 5% 3rem;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .hero-content {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .hero-image {
+    position: relative;
+    width: 100%;
+    min-width: auto;
+    right: auto;
+    top: auto;
+    margin: 0 auto;
+  }
+  
   .hero-shape {
-    width: 500px;
-    height: 500px;
-    right: -150px;
-    top: -150px;
+    display: none;
   }
-
+  
+  /* Sections */
+  .section {
+    padding: 3rem 5%;
+  }
+  
   .section-title {
     font-size: 2rem;
   }
-
+  
+  /* About Section */
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .team-photo img {
+    max-width: 100%;
+  }
+  
+  /* Services */
+  .services {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Portfolio */
+  .portfolio-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Testimonials */
+  .testimonial-slider {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 1.5rem;
+  }
+  
+  .testimonial-card {
+    min-width: 100%;
+  }
+  
+  /* Jobs */
+  .job-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-column h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  /* Form */
   .job-form-container {
     padding: 2rem;
   }
 }
 
-@media (max-width: 576px) {
+/* Small Mobile (480px and down) */
+@media (max-width: 480px) {
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
-
-  .hero p {
-    font-size: 1rem;
+  
+  .cta-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
   }
-
-  .section {
-    padding: 4rem 5%;
+  
+  .section-title {
+    font-size: 1.8rem;
   }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
+  
+  .filter-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
   }
-
+  
   .job-form-container {
     padding: 1.5rem;
+  }
+  
+  .footer {
+    padding: 3rem 5% 2rem;
   }
 }

@@ -40,8 +40,8 @@ window.addEventListener("load", () => {
         y: -30,
         duration: 2,
         ease: "sine.inOut",
-        delay:2,
-        opacity:0
+        delay: 2,
+        opacity: 0
     });
     gsap.to(".hero-image", {
         y: -20,
@@ -49,7 +49,7 @@ window.addEventListener("load", () => {
         yoyo: true,
         duration: 10,
         ease: "sine.inOut",
-        delay:4
+        delay: 4
     });
 
 });
@@ -143,20 +143,40 @@ jobApplyBtns.forEach(btn => {
     });
 });
 
-// Form submission
 const applicationForm = document.getElementById('application-form');
 
-applicationForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+applicationForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    // Here you would typically send the form data to a server
-    // For this example, we'll just show an alert
-    alert('Application submitted successfully! We will contact you soon.');
+  const formData = {
+    fullName: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    role: document.getElementById("role").value,
+    portfolio: document.getElementById("portfolio").value,
+    resume: document.getElementById("resume").value,
+    introduction: document.getElementById("message").value
+  };
 
-    // Reset form
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyUH29h5Vp8uScinaG-lr8yDCRpdOxwv8lcYL9E3YJxgFtAhkcIUw2hMxXrYtNS4XUq/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+    alert("✅ Application submitted! Check your inbox.");
     applicationForm.reset();
-    jobFormContainer.style.display = 'none';
+    document.getElementById("job-form").style.display = 'none';
+  } catch (err) {
+    alert("❌ Submission failed.");
+    console.error("Fetch error:", err);
+  }
 });
+
+
 
 // Animation on scroll
 const fadeElements = document.querySelectorAll('.fade-in');
